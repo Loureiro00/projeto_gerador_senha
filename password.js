@@ -1,4 +1,5 @@
 let passowordLength =16
+const inputEl = document.querySelector("#passoword")
 function generatePassword(){
     const chars = "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNOPQRSTVWXYZ123456789?!@&*(){}[]"
 
@@ -9,12 +10,14 @@ function generatePassword(){
         passoword += chars.substring(randomNumber,randomNumber + 1)
     }
 
-    const inputEl = document.querySelector("#passoword")
-    inputEl.value = (passoword)
     
-    console.log(passoword)
-
+    inputEl.value = (passoword)
 }
+
+function copy(){
+    navigator.clipboard.writeText(inputEl.value)
+}
+
 
 const passowordLengthEl = document.querySelector("#passoword-length")
 passowordLengthEl.addEventListener("input", function(){
@@ -23,4 +26,6 @@ passowordLengthEl.addEventListener("input", function(){
     generatePassword()
 })
 
+document.querySelector("#copy-1").addEventListener("click",copy)
+document.querySelector("#copy-2").addEventListener("click",copy)
 generatePassword()
